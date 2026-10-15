@@ -1,0 +1,13 @@
+Steps for minimal Google SSO testing:
+- Create a new project on Google Cloud Console
+- Get started on configuration Google Auth Platform
+    - app name
+    - support email (could be the current email)
+    - audience: external
+    - contact info: current email
+- Create Oauth client
+    - Type: Web application
+    - Authorized JavaScript origins: add http://localhost:<port>
+    - Authorized redirect URIs: add http://localhost:<port>
+- Copy the client ID, put to environment
+- Use @react-oauth/google to access the client ID to provide the login button

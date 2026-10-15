@@ -1,0 +1,7 @@
+# TODO: Update this file.
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://boilerplate.domain/sitemap.xml

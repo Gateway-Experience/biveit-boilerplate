@@ -1,0 +1,69 @@
+<!-- TODO: update this file -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>Boilerplate - title</title>
+    <meta name="title" content="Boilerplate - title">
+    <meta name="description" content="Boilerplate description">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://boilerplate.domain/">
+    <meta property="og:title" content="Boilerplate - title">
+    <meta property="og:description" content="Boilerplate description">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://boilerplate.domain/">
+    <meta property="twitter:title" content="Boilerplate - title">
+    <meta property="twitter:description" content="Boilerplate description">
+
+    <!-- Location Relevance -->
+    <meta name="geo.region" content="VN">
+    <meta name="geo.placename" content="Vietnam">
+
+    <!-- Schema.org markup for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Boilerplate",
+      "url": "https://boilerplate.domain",
+      "description": "Boilerplate description",
+    }
+    </script>
+
+    <!-- Preview location bridge: when this site runs inside the vib3 preview (an iframe on another origin), it
+         tells the preview which page it's on, so the preview's location bar can follow links clicked in here.
+         The preview can't read a cross-origin frame's location itself. Runs before the app so the router's
+         history calls are already covered; does nothing when the site isn't framed. Keep it. -->
+    <script>
+      if (window.parent !== window) {
+        const reportLocation = () => window.parent.postMessage(
+          { type: 'vib3:preview-location', path: location.pathname + location.search + location.hash },
+          '*',
+        );
+        for (const method of ['pushState', 'replaceState']) {
+          const original = history[method];
+          history[method] = function (...args) {
+            const result = original.apply(this, args);
+            reportLocation();
+            return result;
+          };
+        }
+        addEventListener('popstate', reportLocation);
+        addEventListener('hashchange', reportLocation);
+        reportLocation();
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
