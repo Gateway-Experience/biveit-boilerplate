@@ -3,6 +3,8 @@
 # that's meant to be committed.
 .env
 .env.local*
+# ...except the platform's template for it (no secrets in it: they're filled in when it's rendered).
+!.env.local.tmpl
 .env.dev
 .env.prod
 .env.canary
