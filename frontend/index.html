@@ -38,14 +38,14 @@
     }
     </script>
 
-    <!-- Preview location bridge: when this site runs inside the vib3 preview (an iframe on another origin), it
+    <!-- Preview location bridge: when this site runs inside the biveit preview (an iframe on another origin), it
          tells the preview which page it's on, so the preview's location bar can follow links clicked in here.
          The preview can't read a cross-origin frame's location itself. Runs before the app so the router's
          history calls are already covered; does nothing when the site isn't framed. Keep it. -->
     <script>
       if (window.parent !== window) {
         const reportLocation = () => window.parent.postMessage(
-          { type: 'vib3:preview-location', path: location.pathname + location.search + location.hash },
+          { type: 'biveit:preview-location', path: location.pathname + location.search + location.hash },
           '*',
         );
         for (const method of ['pushState', 'replaceState']) {
