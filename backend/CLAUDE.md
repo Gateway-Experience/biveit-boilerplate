@@ -259,6 +259,14 @@ Good:
 Use shop_repo directly. The caller checks for existence themselves.
 Why: thin wrapper in services. Bad practice. Use repo directly for simple CRUD functions (but if say, update op has some more validation logic instead of pure pass-through, it should stay in service layer).
 
+# LOGINS
+
+Keep logins on the bearer token this app already uses (`Authorization: Bearer <jwt>`, see src/utils/auth.py),
+which the frontend keeps in localStorage. Don't switch to cookie sessions: the user watches the site inside a
+preview embedded in another site, and browsers restrict cookies there -- a cookie login seems to work, then
+logs the user straight back out (in Safari it never works at all). A token works everywhere. If something
+truly needs a cookie, set it `SameSite=None; Secure`.
+
 # LINT AND TESTING
 
 After a round of changes, you should do sanity check by running these:

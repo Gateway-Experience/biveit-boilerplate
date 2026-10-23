@@ -182,6 +182,12 @@ Use `npx shadcn@latest ...` to manage shadcn, e.g. to add a new component. This 
 
 The only thing to customize project-to-project is probably just the color scheme. You can do that in src/styles/index.css, the color tokens. Be sure to properly customize both dark and light theme.
 
+## Logins
+
+Keep the login token in localStorage and send it as `Authorization: Bearer <token>` (src/utils/request.ts) --
+don't move to cookies. The user watches the site inside a preview embedded in another site, where browsers
+restrict cookies: a cookie login seems to work, then logs them straight back out (in Safari it never works).
+
 # Claude skills
 
 If the ui-ux-pro-max@ui-ux-pro-max-skill claude skill is available, use it as a source of references and guidances on how to create nice, sensible, production-grade UI. It's more on the aesthetic and visual side, but stick to our coding convention and use shadcn as base ui components.
